@@ -228,8 +228,8 @@ def click_attack(box):
     y2 = int(box[3])
     print('| x:', x, '| y:', y)
     d = random.uniform(0.01, 0.05)
-    # pyautogui.moveTo(round((x+x2)/2,0), round((y+y2)/2,0), duration=d) # center click
-    pyautogui.moveTo(round((x + x2) / 2, 0), round((y + (y * 0.1)), 0), duration=d)  # 10% upper (head) click
+    pyautogui.moveTo(round((x+x2)/2,0), round((y+y2)/2,0), duration=d) # center click
+    #pyautogui.moveTo(round((x + x2) / 2, 0), round((y + (y * 0.1)), 0), duration=d)  # 10% upper (head) click
     d = random.uniform(0.01, 0.05)
     pyautogui.click(button='left', duration=d)
 
@@ -312,7 +312,7 @@ def SHOWMSS_screen():
             if Enable_clicks:
                 if float(conf) > 0.9 and attack > c:
                     print(object)
-                    if object != "Cow" and object != "Cou" and object != "Cow calf":
+                    if object == "Chicken":
                         click_attack(xyxy)
                         shoot_time = time.time()
             if cv2.waitKey(1) & 0xFF == ord("q"):
@@ -333,7 +333,7 @@ source = 'fullscreen.jpg'  # file/dir/URL/glob, 0 for webcam
 imgsz = [640, 640]  # inference size (pixels)
 conf_thres = 0.7  # confidence threshold
 iou_thres = 0.45  # NMS IOU threshold
-max_det = 10  # maximum detections per image
+max_det = 5  # maximum detections per image
 device = '0'  # cuda device, i.e. 0 or 0,1,2,3 or cpu
 view_img = True  # show results
 classes = None  # filter by class: --class 0, or --class 0 2 3
@@ -345,7 +345,7 @@ hide_labels = False  # hide labels
 hide_conf = False  # hide confidences
 half = False  # use FP16 half-precision inference
 Run_Duration_hours = 6  # how long to run code for in hours
-Enable_clicks = False
+Enable_clicks = True
 if __name__ == "__main__":
     x = random.randrange(625, 635)
     y = random.randrange(345, 355)
